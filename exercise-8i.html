@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Coinflip Game</title>
+  </head>
+  <body>
+    <p>Flip a Coin!</p>
+    <button onclick = "coinFlip('heads')">Heads</button>
+    <button onclick="coinFlip('tails')">Tails</button>
+    <button onclick ="
+    score.wins = 0;
+    score.losses = 0;
+    localStorage.removeItem('score');
+    alert('Your score has been reset!');
+    "
+    >Reset Score</button>
+
+
+    <script>
+      let score = JSON.parse(localStorage.getItem('score')) || {
+        wins: 0,
+        losses: 0,
+      };
+      function coinFlip(playerMove){
+        let move = computerMove();
+        let result = '';
+
+        if(playerMove === move){
+          result = 'You win!';
+          score.wins++;
+        }
+        else{
+          result = 'You lose!';
+          score.losses++;
+        }
+
+        alert(`You chose ${playerMove}, and the coin landed ${move}. ${result}
+Wins: ${score.wins} Losses: ${score.losses}`);
+
+      localStorage.setItem('score', JSON.stringify(score));
+
+      }
+      function computerMove(){
+        const move = Math.random();
+        let side = " ";
+        if(move <=.5){
+          side = 'heads';
+        }
+        else{
+          side = 'tails';
+        }
+        return side;
+      }
+    </script>
+  </body>
+</html>
