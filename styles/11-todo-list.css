@@ -19,7 +19,7 @@ body{
 .name-input{
   font-size: 15px;
   padding: 6px;
-
+  margin: 2px;
 }
 .add-todo-button{
   background-color: green;
